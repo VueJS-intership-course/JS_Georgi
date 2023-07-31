@@ -4,20 +4,20 @@ const user = {
 
 user.self = user;
 
-// function stringify(obj) {
-//     let cache = [];
-//     let str = JSON.stringify(obj, function (key, value) {
-//         if (typeof value === "object" && value !== null) {
-//             if (cache.indexOf(value) !== -1) {
-//                 return;
-//             }
-//             cache.push(value);
-//         }
-//         return value;
-//     });
-//     cache = null; 
-//     return str;
-// }
+function stringify(obj) {
+    let cache = [];
+    let str = JSON.stringify(obj, function (key, value) {
+        if (typeof value === "object" && value !== null) {
+            if (cache.indexOf(value) !== -1) {
+                return;
+            }
+            cache.push(value);
+        }
+        return value;
+    });
+    cache = null; 
+    return str;
+}
 
 
 // function replacer(key, value) {
@@ -30,7 +30,7 @@ user.self = user;
 
 const stringified = JSON.stringify(user, (key, value) => {
     if (key === 'self') {
-        return
+        return null;
     }
 
     return value
